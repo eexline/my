@@ -18,8 +18,23 @@ export function AdminContentProtection() {
       e.stopPropagation()
     }
 
-    // Разрешаем копирование в админке
-    const enableCopy = (e: KeyboardEvent) => {
+    // Разрешаем копирование в админке (для Ctrl+C)
+    const enableCopyKey = (e: KeyboardEvent) => {
+      e.stopPropagation()
+    }
+
+    // Разрешаем копирование через событие copy
+    const enableCopy = (e: ClipboardEvent) => {
+      e.stopPropagation()
+    }
+
+    // Разрешаем вырезание через событие cut
+    const enableCut = (e: ClipboardEvent) => {
+      e.stopPropagation()
+    }
+
+    // Разрешаем вставку в админке
+    const enablePaste = (e: ClipboardEvent) => {
       e.stopPropagation()
     }
 
@@ -32,13 +47,19 @@ export function AdminContentProtection() {
 
     // Добавляем обработчики, которые останавливают распространение событий
     document.addEventListener('contextmenu', enableContextMenu, true)
-    document.addEventListener('keydown', enableCopy, true)
+    document.addEventListener('keydown', enableCopyKey, true)
+    document.addEventListener('paste', enablePaste, true)
+    document.addEventListener('copy', enableCopy, true)
+    document.addEventListener('cut', enableCut, true)
     document.addEventListener('selectstart', enableSelectStart, true)
 
     // Очистка при размонтировании
     return () => {
       document.removeEventListener('contextmenu', enableContextMenu, true)
-      document.removeEventListener('keydown', enableCopy, true)
+      document.removeEventListener('keydown', enableCopyKey, true)
+      document.removeEventListener('paste', enablePaste, true)
+      document.removeEventListener('copy', enableCopy, true)
+      document.removeEventListener('cut', enableCut, true)
       document.removeEventListener('selectstart', enableSelectStart, true)
     }
   }, [])

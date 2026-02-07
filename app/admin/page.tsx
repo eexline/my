@@ -55,8 +55,10 @@ export default function AdminPage() {
 
   if (!auth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-        <div className="max-w-md w-full card p-8">
+      <>
+        <AdminContentProtection />
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+          <div className="max-w-md w-full card p-8">
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
               <FiLock size={32} className="text-primary-600" />
@@ -75,6 +77,18 @@ export default function AdminPage() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                onPaste={(e) => {
+                  // Разрешаем вставку в поле имени пользователя
+                  e.stopPropagation()
+                }}
+                onCopy={(e) => {
+                  // Разрешаем копирование
+                  e.stopPropagation()
+                }}
+                onCut={(e) => {
+                  // Разрешаем вырезание
+                  e.stopPropagation()
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 placeholder="Введите имя пользователя"
                 autoFocus
@@ -90,6 +104,18 @@ export default function AdminPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onPaste={(e) => {
+                  // Разрешаем вставку в поле пароля
+                  e.stopPropagation()
+                }}
+                onCopy={(e) => {
+                  // Разрешаем копирование из поля пароля
+                  e.stopPropagation()
+                }}
+                onCut={(e) => {
+                  // Разрешаем вырезание из поля пароля
+                  e.stopPropagation()
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 placeholder="Введите пароль"
                 required
@@ -116,6 +142,7 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+      </>
     )
   }
 
