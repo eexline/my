@@ -7,12 +7,18 @@ export class ApiClient {
   private token: string | null = null
 
   constructor(baseUrl: string = API_URL) {
-    if (!baseUrl) {
-      throw new Error('API URL не настроен. Установите переменную окружения NEXT_PUBLIC_API_URL')
-    }
-    this.baseUrl = baseUrl
+    // В браузере используем относительные пути (проксируются через Vercel)
+    // На сервере используем полный URL
     if (typeof window !== 'undefined') {
+      // В браузере - относительные пути через rewrites
+      this.baseUrl = ''
       this.token = localStorage.getItem('admin_token')
+    } else {
+      // На сервере - полный URL
+      if (!baseUrl) {
+        throw new Error('API URL не настроен. Установите переменную окружения NEXT_PUBLIC_API_URL')
+      }
+      this.baseUrl = baseUrl
     }
   }
 
@@ -145,7 +151,10 @@ export class ApiClient {
     const formData = new FormData()
     formData.append('image', file)
 
-    const url = `${this.baseUrl}/api/upload/image`
+    // В браузере используем относительный путь, на сервере - полный URL
+    const url = typeof window !== 'undefined' 
+      ? '/api/upload/image' 
+      : `${this.baseUrl}/api/upload/image`
     const headers: HeadersInit = {}
 
     if (this.token) {

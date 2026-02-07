@@ -18,13 +18,8 @@ export function ApiStatus() {
 
   const checkApi = async () => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL
-      if (!apiUrl) {
-        setStatus('offline')
-        setError('API URL не настроен')
-        return
-      }
-      const response = await fetch(`${apiUrl}/health`)
+      // Используем относительный путь, который проксируется через Vercel
+      const response = await fetch('/health')
       if (response.ok) {
         setStatus('online')
         setError('')

@@ -47,15 +47,24 @@ const nextConfig = {
       },
     ]
   },
-  // Rewrites для доступа к загруженным изображениям через бэкенд
+  // Rewrites для проксирования API запросов через Vercel (HTTPS)
   async rewrites() {
     if (!process.env.NEXT_PUBLIC_API_URL) {
       return []
     }
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
     return [
       {
+        source: '/api/:path*',
+        destination: `${apiUrl}/api/:path*`,
+      },
+      {
         source: '/uploads/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/uploads/:path*`,
+        destination: `${apiUrl}/uploads/:path*`,
+      },
+      {
+        source: '/health',
+        destination: `${apiUrl}/health`,
       },
     ]
   },
