@@ -505,6 +505,7 @@ export const en = {
     backToArticles: 'Back to Articles',
     readMore: 'Read More',
     notFound: 'Article Not Found',
+    views: 'views',
     categories: {
       'Общее': 'General',
       'Стратегии': 'Strategies',
