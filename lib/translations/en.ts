@@ -111,6 +111,7 @@ export const en = {
       title: 'Trading Strategies for Binary Options',
       description: 'Detailed guides on effective trading strategies. Learn how to use signal bot for maximum profit.',
       cta: 'Get Signals',
+      pocketOption: 'Pocket Option',
     },
     list: {
       strategy1: {
