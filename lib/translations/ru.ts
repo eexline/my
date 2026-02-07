@@ -377,6 +377,8 @@ export const ru = {
     },
     why: {
       title: 'Почему мы рекомендуем Pocket Option',
+      onPlatform: 'на <PocketOptionLink>Pocket Option</PocketOptionLink>',
+      platformOffers: 'Платформа <PocketOptionLink>Pocket Option</PocketOptionLink> предлагает лучшие условия для трейдеров.',
       highPayouts: {
         title: 'Высокие Выплаты',
         description: 'До 92% прибыли с одной успешной сделки. Один из самых высоких процентов выплат на рынке.',
