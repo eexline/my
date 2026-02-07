@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { apiClient } from '@/lib/api-client'
 
 // Динамический импорт React Quill для избежания SSR проблем
+// @ts-ignore - react-quill типы несовместимы с Next.js dynamic
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 import 'react-quill/dist/quill.snow.css'
 
@@ -14,62 +15,78 @@ interface BlogEditorProps {
 }
 
 export function BlogEditor({ value, onChange }: BlogEditorProps) {
-  const quillRef = useRef<any>(null)
+  const editorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && quillRef.current) {
-      const quill = quillRef.current.getEditor()
-      
-      // Отключаем защиту от выделения для редактора
-      const editorElement = quillRef.current.getEditor().root
-      if (editorElement) {
-        editorElement.style.userSelect = 'text'
-        editorElement.style.webkitUserSelect = 'text'
-        editorElement.style.mozUserSelect = 'text'
-        editorElement.style.msUserSelect = 'text'
+    if (typeof window !== 'undefined') {
+      // Ждем, пока ReactQuill полностью загрузится
+      const timer = setTimeout(() => {
+        const editorElement = editorRef.current?.querySelector('.ql-editor') as HTMLElement
+        const quillContainer = editorRef.current?.querySelector('.ql-container') as HTMLElement
         
-        // Разрешаем события выделения в редакторе
-        editorElement.addEventListener('selectstart', (e: Event) => {
-          e.stopPropagation()
-        }, true)
-        editorElement.addEventListener('mousedown', (e: Event) => {
-          e.stopPropagation()
-        }, true)
-      }
-      
-      // Настройка загрузки изображений
-      const toolbar = quill.getModule('toolbar')
-      toolbar.addHandler('image', () => {
-        const input = document.createElement('input')
-        input.setAttribute('type', 'file')
-        input.setAttribute('accept', 'image/*')
-        input.click()
+        if (editorElement) {
+          // Отключаем защиту от выделения для редактора
+          editorElement.style.userSelect = 'text'
+          editorElement.style.setProperty('-webkit-user-select', 'text')
+          editorElement.style.setProperty('-moz-user-select', 'text')
+          editorElement.style.setProperty('-ms-user-select', 'text')
+          
+          // Разрешаем события выделения в редакторе
+          editorElement.addEventListener('selectstart', (e: Event) => {
+            e.stopPropagation()
+          }, true)
+          editorElement.addEventListener('mousedown', (e: Event) => {
+            e.stopPropagation()
+          }, true)
+        }
 
-        input.onchange = async () => {
-          const file = input.files?.[0]
-          if (!file) return
+        // Настройка загрузки изображений через глобальный доступ к Quill
+        if (quillContainer) {
+          // @ts-ignore - доступ к Quill через window
+          const Quill = (window as any).Quill
+          if (Quill) {
+            const quillInstance = Quill.find(quillContainer)
+            if (quillInstance) {
+              const toolbar = quillInstance.getModule('toolbar')
+              if (toolbar) {
+                toolbar.addHandler('image', () => {
+                  const input = document.createElement('input')
+                  input.setAttribute('type', 'file')
+                  input.setAttribute('accept', 'image/*')
+                  input.click()
 
-          try {
-            // Показываем индикатор загрузки
-            const range = quill.getSelection(true)
-            quill.insertText(range.index, 'Загрузка изображения...', 'user')
-            quill.setSelection(range.index + 22, 0)
+                  input.onchange = async () => {
+                    const file = input.files?.[0]
+                    if (!file) return
 
-            // Загружаем изображение
-            const result = await apiClient.uploadImage(file)
-            
-            // Вставляем изображение в редактор (используем относительный путь через rewrites)
-            const imageUrl = result.url
-            quill.deleteText(range.index, 22)
-            quill.insertEmbed(range.index, 'image', imageUrl, 'user')
-            quill.setSelection(range.index + 1, 0)
-          } catch (error: any) {
-            alert('Ошибка загрузки изображения: ' + error.message)
-            const range = quill.getSelection(true)
-            quill.deleteText(range.index - 22, 22)
+                    try {
+                      // Показываем индикатор загрузки
+                      const range = quillInstance.getSelection(true)
+                      quillInstance.insertText(range.index, 'Загрузка изображения...', 'user')
+                      quillInstance.setSelection(range.index + 22, 0)
+
+                      // Загружаем изображение
+                      const result = await apiClient.uploadImage(file)
+                      
+                      // Вставляем изображение в редактор
+                      const imageUrl = result.url
+                      quillInstance.deleteText(range.index, 22)
+                      quillInstance.insertEmbed(range.index, 'image', imageUrl, 'user')
+                      quillInstance.setSelection(range.index + 1, 0)
+                    } catch (error: any) {
+                      alert('Ошибка загрузки изображения: ' + error.message)
+                      const range = quillInstance.getSelection(true)
+                      quillInstance.deleteText(range.index - 22, 22)
+                    }
+                  }
+                })
+              }
+            }
           }
         }
-      })
+      }, 200)
+
+      return () => clearTimeout(timer)
     }
   }, [])
 
@@ -95,9 +112,8 @@ export function BlogEditor({ value, onChange }: BlogEditorProps) {
   ]
 
   return (
-    <div className="blog-editor">
+    <div className="blog-editor" ref={editorRef}>
       <ReactQuill
-        ref={quillRef}
         theme="snow"
         value={value}
         onChange={onChange}
