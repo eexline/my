@@ -54,52 +54,52 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+          {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-2">
+          <div className="md:hidden mt-4 pb-4 space-y-1 bg-gray-50 rounded-lg p-4 border border-gray-200">
             <Link 
               href="/" 
-              className="block py-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="block py-3 px-4 text-gray-700 hover:text-primary-600 hover:bg-white transition-colors rounded-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.home}
             </Link>
             <Link 
               href="/strategies" 
-              className="block py-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="block py-3 px-4 text-gray-700 hover:text-primary-600 hover:bg-white transition-colors rounded-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.strategies}
             </Link>
             <Link 
               href="/bot" 
-              className="block py-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="block py-3 px-4 text-gray-700 hover:text-primary-600 hover:bg-white transition-colors rounded-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.bot}
             </Link>
             <Link 
               href="/broker" 
-              className="block py-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="block py-3 px-4 text-gray-700 hover:text-primary-600 hover:bg-white transition-colors rounded-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.broker}
             </Link>
             <Link 
               href="/blog" 
-              className="block py-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="block py-3 px-4 text-gray-700 hover:text-primary-600 hover:bg-white transition-colors rounded-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.blog}
             </Link>
             <Link 
               href="/telegram" 
-              className="btn-primary w-full px-6 py-3 text-center mt-4"
+              className="btn-primary w-full px-6 py-3 text-center mt-4 font-semibold"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.telegram}
             </Link>
-            <div className="pt-2">
+            <div className="pt-4 mt-4">
               <LanguageSwitcher />
             </div>
           </div>
