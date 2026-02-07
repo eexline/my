@@ -67,7 +67,7 @@ export default function AdminPage() {
             <p className="text-gray-600">Введите пароль для доступа</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4" data-admin="true">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 Имя пользователя

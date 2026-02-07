@@ -11,14 +11,29 @@ export function ContentProtection() {
 
   useEffect(() => {
     if (!mounted || typeof window === 'undefined') return
+    
+    // Проверка, находится ли элемент внутри админ-панели
+    const isInAdminPanel = (target: EventTarget | null): boolean => {
+      if (!target || !(target instanceof HTMLElement)) return false
+      // Проверяем, находится ли элемент внутри формы админ-панели или внутри элементов с id="username", id="password"
+      const adminForm = target.closest('form')
+      const isAdminInput = target.id === 'username' || target.id === 'password' || 
+                          !!target.closest('#username') || !!target.closest('#password')
+      const isAdminPage = window.location.pathname === '/admin' || 
+                         !!target.closest('[data-admin="true"]')
+      return !!(adminForm && (isAdminInput || isAdminPage)) || isAdminPage
+    }
+
     // ========== ЗАЩИТА ОТ ВЫДЕЛЕНИЯ ТЕКСТА ==========
     const disableSelection = (e: Event) => {
+      if (isInAdminPanel(e.target)) return
       e.preventDefault()
       return false
     }
 
     // ========== ЗАЩИТА ОТ КОНТЕКСТНОГО МЕНЮ ==========
     const disableContextMenu = (e: MouseEvent) => {
+      if (isInAdminPanel(e.target)) return
       e.preventDefault()
       return false
     }
@@ -36,6 +51,18 @@ export function ContentProtection() {
 
     // ========== ЗАЩИТА ОТ КОПИРОВАНИЯ ЧЕРЕЗ КЛАВИАТУРУ ==========
     const disableCopy = (e: KeyboardEvent) => {
+      // Разрешаем вставку (Ctrl+V) в админ-панели
+      if (isInAdminPanel(e.target) && (e.ctrlKey || e.metaKey) && (e.key === 'v' || e.key === 'V')) {
+        return
+      }
+      // Разрешаем копирование (Ctrl+C) в админ-панели
+      if (isInAdminPanel(e.target) && (e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
+        return
+      }
+      // Разрешаем вырезание (Ctrl+X) в админ-панели
+      if (isInAdminPanel(e.target) && (e.ctrlKey || e.metaKey) && (e.key === 'x' || e.key === 'X')) {
+        return
+      }
       // Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+V, Ctrl+S, Ctrl+P
       if ((e.ctrlKey || e.metaKey) && (
         e.key === 'c' || e.key === 'C' || 
@@ -77,6 +104,7 @@ export function ContentProtection() {
 
     // ========== ЗАЩИТА ОТ БУФЕРА ОБМЕНА ==========
     const disableClipboard = (e: ClipboardEvent) => {
+      if (isInAdminPanel(e.target)) return
       e.preventDefault()
       if (e.clipboardData) {
         e.clipboardData.setData('text/plain', '')
@@ -87,6 +115,7 @@ export function ContentProtection() {
 
     // ========== ЗАЩИТА ОТ ВСТАВКИ ==========
     const disablePaste = (e: ClipboardEvent) => {
+      if (isInAdminPanel(e.target)) return
       e.preventDefault()
       return false
     }
