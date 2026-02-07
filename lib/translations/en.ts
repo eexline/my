@@ -372,6 +372,7 @@ export const en = {
       description: 'Reliable trading platform with high payouts, fast withdrawals and excellent support. Perfect for working with our signals.',
       cta: 'Register',
       ctaSecondary: 'Get Signals',
+      pocketOption: 'Pocket Option',
     },
     why: {
       title: 'Why We Recommend This Broker',
