@@ -17,9 +17,6 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  experimental: {
-    optimizeCss: true,
-  },
   // Защита от iframe embedding
   async headers() {
     return [

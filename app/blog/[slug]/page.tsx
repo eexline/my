@@ -1,19 +1,22 @@
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import { getBlog } from '@/lib/api-server'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { getLocale } from '@/lib/get-locale'
 import { getTranslations } from '@/lib/get-translations'
 
-const Header = dynamic(() => import('@/components/Header').then(mod => ({ default: mod.Header })), { 
+// Делаем страницу динамической, так как данные приходят из внешнего API
+export const dynamic = 'force-dynamic'
+
+const Header = nextDynamic(() => import('@/components/Header').then(mod => ({ default: mod.Header })), { 
   ssr: true,
   loading: () => <div className="h-16 bg-white border-b border-gray-200 animate-pulse" />
 })
-const Footer = dynamic(() => import('@/components/Footer').then(mod => ({ default: mod.Footer })), { 
+const Footer = nextDynamic(() => import('@/components/Footer').then(mod => ({ default: mod.Footer })), { 
   ssr: true,
   loading: () => <div className="h-32 bg-gray-50 animate-pulse" />
 })
-const BlogPostPageClient = dynamic(() => import('./page-client').then(mod => ({ default: mod.BlogPostPageClient })), { 
+const BlogPostPageClient = nextDynamic(() => import('./page-client').then(mod => ({ default: mod.BlogPostPageClient })), { 
   ssr: true 
 })
 
