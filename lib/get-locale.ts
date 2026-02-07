@@ -4,9 +4,9 @@ import { Locale, defaultLocale, isValidLocale, getLocaleFromCountry } from './i1
 export async function getLocale(): Promise<Locale> {
   // Сначала проверяем cookies (выбор пользователя)
   const cookieStore = await cookies()
-  const cookieLocale = cookieStore.get('locale')?.value
+  const cookieLocale = cookieStore.get('locale')?.value ?? null
   
-  if (isValidLocale(cookieLocale)) {
+  if (cookieLocale && isValidLocale(cookieLocale)) {
     return cookieLocale
   }
   
