@@ -260,6 +260,7 @@ export const en = {
       description: 'Automated AI bot that analyzes market 24/7 and sends accurate trading signals directly to Telegram. 85%+ accuracy.',
       cta: 'Connect to Bot',
       ctaSecondary: 'Learn About Strategies',
+      pocketOption: 'Pocket Option',
     },
     stats: {
       accuracy: 'Signal Accuracy',
