@@ -1,0 +1,17 @@
+{
+  "name": "Pocket Option Community - Профессиональные Сигналы",
+  "short_name": "Pocket Option Community",
+  "description": "Профессиональные торговые сигналы для бинарных опционов",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0ea5e9",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
+
