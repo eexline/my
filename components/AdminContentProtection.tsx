@@ -8,9 +8,9 @@ export function AdminContentProtection() {
     // Отключаем защиту от выделения для админки
     const enableSelection = () => {
       document.body.style.userSelect = 'text'
-      document.body.style.webkitUserSelect = 'text'
-      document.body.style.mozUserSelect = 'text'
-      document.body.style.msUserSelect = 'text'
+      document.body.style.setProperty('-webkit-user-select', 'text')
+      document.body.style.setProperty('-moz-user-select', 'text')
+      document.body.style.setProperty('-ms-user-select', 'text')
     }
 
     // Разрешаем контекстное меню в админке
