@@ -77,21 +77,15 @@ export function ContentProtection() {
         e.stopPropagation()
         return false
       }
-      // ВРЕМЕННО ОТКЛЮЧЕНО: F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+Shift+K
-      // if (e.key === 'F12' || 
-      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      //   e.stopImmediatePropagation()
-      //   return false
-      // }
-      // ВРЕМЕННО ОТКЛЮЧЕНО: Блокировка F12 через разные способы
-      // if (e.keyCode === 123) { // F12 keyCode
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      //   e.stopImmediatePropagation()
-      //   return false
-      // }
+      // БЛОКИРОВКА F12 И ВСЕХ СПОСОБОВ ОТКРЫТИЯ DEVTOOLS
+      if (e.key === 'F12' || 
+          e.keyCode === 123 || // F12 keyCode
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        return false
+      }
     }
 
     // ========== ЗАЩИТА ОТ PRINT SCREEN ==========
@@ -153,9 +147,15 @@ export function ContentProtection() {
           console.log('%cНе пытайтесь копировать контент этого сайта!', 'color: red; font-size: 20px;')
           console.log('%cЭто действие может нарушать авторские права.', 'color: red; font-size: 16px;')
           
-          // После нескольких попыток - перенаправление
-          if (devToolsWarningCount > 3) {
-            window.location.href = '/'
+          // Блокируем DevTools через закрытие окна или перенаправление
+          if (devToolsWarningCount > 2) {
+            // Попытка закрыть DevTools через blur
+            window.blur()
+            window.focus()
+            // Перенаправление на главную страницу
+            if (devToolsWarningCount > 3) {
+              window.location.href = '/'
+            }
           }
         }
       } else {
@@ -163,32 +163,32 @@ export function ContentProtection() {
       }
     }
 
-    const devToolsInterval = setInterval(detectDevTools, 200)
+    const devToolsInterval = setInterval(detectDevTools, 100) // Более частое обнаружение
 
-    // ========== ВРЕМЕННО ОТКЛЮЧЕНО: ЗАЩИТА ОТ ИНСПЕКТИРОВАНИЯ ЭЛЕМЕНТОВ ==========
+    // ========== ЗАЩИТА ОТ ИНСПЕКТИРОВАНИЯ ЭЛЕМЕНТОВ ==========
     const disableInspect = (e: KeyboardEvent) => {
-      // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
-      // if (e.key === 'F12' || 
-      //     e.keyCode === 123 ||
-      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      //   e.stopImmediatePropagation()
-      //   return false
-      // }
+      // Блокировка F12 и всех комбинаций для открытия DevTools
+      if (e.key === 'F12' || 
+          e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        return false
+      }
     }
     
-    // ВРЕМЕННО ОТКЛЮЧЕНО: Дополнительная защита через перехват всех F-клавиш
+    // Дополнительная защита через перехват всех F-клавиш
     const disableFunctionKeys = (e: KeyboardEvent) => {
-      // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
-      // if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
-      //   if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
-      //     e.preventDefault()
-      //     e.stopPropagation()
-      //     e.stopImmediatePropagation()
-      //     return false
-      //   }
-      // }
+      // Блокировка F12 и комбинаций с Ctrl+Shift
+      if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
+          e.preventDefault()
+          e.stopPropagation()
+          e.stopImmediatePropagation()
+          return false
+        }
+      }
     }
 
     // ========== ЗАЩИТА ОТ ПРАВОЙ КНОПКИ МЫШИ НА ИЗОБРАЖЕНИЯХ ==========
@@ -276,6 +276,7 @@ export function ContentProtection() {
       const originalLog = console.log
       const originalWarn = console.warn
       const originalError = console.error
+      const originalDebug = console.debug
       
       console.log = function(...args: any[]) {
         if (args.some(arg => typeof arg === 'string' && (arg.includes('copy') || arg.includes('select') || arg.includes('getSelection')))) {
@@ -283,7 +284,46 @@ export function ContentProtection() {
         }
         originalLog.apply(console, args)
       }
+      
+      // Блокировка debugger
+      const originalDebugger = (window as any).debugger
+      ;(window as any).debugger = function() {
+        // Блокируем debugger
+        return
+      }
     }
+    
+    // ========== ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА ОТ DEVTOOLS ==========
+    const blockDevTools = () => {
+      // Блокировка через обнаружение консоли
+      const noop = () => {}
+      const devtools = {
+        open: false,
+        orientation: null as string | null
+      }
+      
+      setInterval(() => {
+        if (window.outerHeight - window.innerHeight > 200 || 
+            window.outerWidth - window.innerWidth > 200) {
+          if (!devtools.open) {
+            devtools.open = true
+            // Попытка закрыть DevTools
+            window.blur()
+            window.focus()
+            // Перенаправление после нескольких попыток
+            setTimeout(() => {
+              if (devtools.open) {
+                window.location.href = '/'
+              }
+            }, 1000)
+          }
+        } else {
+          devtools.open = false
+        }
+      }, 100)
+    }
+    
+    blockDevTools()
 
     // ========== ПРИМЕНЕНИЕ ВСЕХ ЗАЩИТ ==========
     document.addEventListener('selectstart', disableSelection, true)
