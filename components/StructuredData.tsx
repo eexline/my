@@ -14,8 +14,8 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Pocket Option Community",
-    "description": "Pocket Option Community - Профессиональные торговые сигналы для Pocket Option с точностью 85%+",
+    "name": "LT TRADE",
+    "description": "LT TRADE - Профессиональные торговые сигналы для Pocket Option с точностью 85%+",
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "sameAs": [
@@ -31,9 +31,9 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Pocket Option Community",
+    "name": "LT TRADE",
     "url": siteUrl,
-    "alternateName": "Pocket Option Trading Signals",
+    "alternateName": "LT TRADE Trading Signals",
     "potentialAction": {
       "@type": "SearchAction",
       "target": `${siteUrl}/search?q={search_term_string}`,
@@ -47,7 +47,7 @@ export function StructuredData() {
     "serviceType": "Торговые сигналы для бинарных опционов",
     "provider": {
       "@type": "Organization",
-      "name": "Trading Signals"
+      "name": "LT TRADE"
     },
     "name": "Профессиональные торговые сигналы",
     "description": "Автоматизированные торговые сигналы с точностью 85%+. AI-бот анализирует рынок 24/7 и отправляет сигналы в Telegram.",

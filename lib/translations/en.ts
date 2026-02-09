@@ -1,7 +1,7 @@
 export const en = {
   // Common
   common: {
-    siteName: 'Pocket Option Community',
+    siteName: 'LT TRADE',
     getStarted: 'Get Started',
     learnMore: 'Learn More',
     readMore: 'Read More',
@@ -26,11 +26,16 @@ export const en = {
   // Home page
   home: {
     hero: {
-      title: 'Professional Trading Signals for <PocketOptionLink>Pocket Option</PocketOptionLink>',
-      description: 'Automated trading signals with 85%+ accuracy from an AI bot. Receive signals in real-time directly in Telegram. Work with proven strategies and a reliable broker <PocketOptionLink>Pocket Option</PocketOptionLink>.',
-      cta: 'Go to Telegram',
-      ctaSecondary: 'Learn About Bot',
+      title: 'AI Signals for Stable Trading on Financial Markets',
+      description: 'Real-time automated market analysis. Clear entry and exit points. No emotions or guessing.',
+      cta: 'Start Receiving Signals',
+      ctaSecondary: 'Go to Telegram',
       pocketOption: 'Pocket Option',
+      badges: {
+        users: '10,000+ active traders',
+        accuracy: '85%+ signal accuracy',
+        verified: 'Time-tested',
+      },
     },
     quickLinks: {
       strategies: 'Strategies',
@@ -70,21 +75,157 @@ export const en = {
     },
     howItWorks: {
       title: 'How It Works',
+      subtitle: 'Just 4 simple steps to start trading',
       step1: {
-        title: 'Registration',
-        description: 'Join our Telegram channel with one click. No complex settings required.',
-        link: 'Go to Telegram',
+        title: 'Register with Broker',
+        description: 'Register with the broker using our link. Free and takes 2 minutes.',
       },
       step2: {
-        title: 'Receiving Signals',
-        description: 'Receive trading signals in real-time directly in Telegram. Each signal contains all necessary information.',
-        link: 'Learn About Bot',
+        title: 'Connect to Telegram Bot',
+        description: 'Connect to the Telegram bot and select currency pair and timeframe.',
       },
       step3: {
-        title: 'Trading',
-        description: 'Use signals to make trading decisions. Work with reliable broker and proven strategies.',
-        link: 'About Broker',
+        title: 'Receive AI Signals',
+        description: 'Receive AI signals with entry and exit points in real-time.',
       },
+      step4: {
+        title: 'Trade with Strategy',
+        description: 'Trade using ready-made strategy with clear recommendations.',
+      },
+      cta: 'Register and Get Access',
+    },
+    trust: {
+      title: 'Why You Can Trust This',
+      subtitle: 'We don\'t promise 100% returns, but we provide real trading tools',
+      ai: {
+        title: 'AI Models and Statistics',
+        description: 'Signals are generated based on AI models and market statistics, not random guesses.',
+        badge: 'Expert Verified',
+      },
+      verification: {
+        title: 'Manual Verification',
+        description: 'All strategies are manually verified by experienced traders before publication.',
+        badge: 'Expert Verified',
+      },
+      security: {
+        title: 'No Access to Funds',
+        description: 'We don\'t have access to your funds. You make decisions, we provide analytics.',
+        badge: 'Secure',
+      },
+      transparency: {
+        title: 'Transparency',
+        description: 'All signals are published openly. You see statistics and results in real-time.',
+        badge: 'Transparent Stats',
+      },
+    },
+    whyTelegram: {
+      title: 'Why Telegram, Not a Website',
+      subtitle: 'We use Telegram for maximum efficiency',
+      instant: {
+        title: 'Instant Notifications',
+        description: 'Receive signals without delays directly on your phone. No need to constantly check the website.',
+      },
+      mobile: {
+        title: 'Convenient on Mobile',
+        description: 'Trade from anywhere. All signals available in one place on your device.',
+      },
+      community: {
+        title: 'Closed Community',
+        description: 'Join a community of traders sharing experience and results.',
+      },
+      speed: {
+        title: 'Signals Without Delays',
+        description: 'Time is money in trading. Telegram ensures instant delivery of every signal.',
+      },
+      cta: 'Go to Telegram and Start',
+    },
+    strategiesPreview: {
+      title: 'Available Strategies',
+      subtitle: 'Choose the approach that suits you',
+      scalping: {
+        title: 'Scalping',
+        description: 'Short trades on fast market movements',
+      },
+      intraday: {
+        title: 'Intraday Strategies',
+        description: 'Day trading with clear targets',
+      },
+      otc: {
+        title: 'OTC Assets',
+        description: 'Working with over-the-counter instruments',
+      },
+      volatile: {
+        title: 'Volatile Sessions',
+        description: 'Strategies for periods of high volatility',
+      },
+      cta: 'View Strategies',
+    },
+    broker: {
+      title: 'Verified Broker for Trading',
+      subtitle: 'The bot works with a verified broker that supports automated trading',
+      free: {
+        title: 'Free Registration',
+        description: 'Start without investment. Registration takes 2 minutes.',
+      },
+      beginner: {
+        title: 'Suitable for Beginners',
+        description: 'Intuitive interface and detailed instructions for newcomers.',
+      },
+      compatible: {
+        title: 'Compatible with Bot',
+        description: 'Full integration with our AI bot for automated trading.',
+      },
+      reliable: {
+        title: 'Reliable Platform',
+        description: 'Time-tested broker with high payouts up to 92%.',
+      },
+      cta: 'Register and Connect Bot',
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      subtitle: 'Answers to the most popular questions',
+      items: {
+        q1: {
+          question: 'How quickly will I get access to signals?',
+          answer: 'Access to signals is provided immediately after registering with the broker and connecting to the Telegram bot. The entire process takes no more than 2-3 minutes.',
+        },
+        q2: {
+          question: 'Do I need to pay for signals?',
+          answer: 'Basic signals are provided free of charge. Access to the VIP channel with extended analytics and additional strategies requires meeting certain conditions, which can be found in the bot.',
+        },
+        q3: {
+          question: 'How accurate are the signals?',
+          answer: 'Signal accuracy is 85%+. All strategies are manually verified by experienced traders. However, remember that trading always involves risks.',
+        },
+        q4: {
+          question: 'Can I use signals on other brokers?',
+          answer: 'Signals are optimized for working with the recommended broker. While you can technically use them on other platforms, we do not guarantee the same accuracy and results.',
+        },
+      },
+    },
+    finalCta: {
+      title: 'Ready to Start Trading with AI Support?',
+      description: 'Join thousands of traders already using our signals',
+      ctaBroker: 'Start via Broker',
+      ctaTelegram: 'Go to Telegram',
+    },
+    guarantees: {
+      title: 'Our Guarantees',
+      subtitle: 'We guarantee transparency and security',
+      noHiddenFees: {
+        title: 'No Hidden Fees',
+        description: 'No hidden commissions or additional payments. Everything is transparent and honest.',
+      },
+      freeRegistration: {
+        title: 'Free Registration',
+        description: 'Start without investment. Registration is completely free and takes 2 minutes.',
+      },
+      instantAccess: {
+        title: 'Instant Access',
+        description: 'Get access to signals immediately after registration. No waiting or verification.',
+      },
+      popular: 'Popular',
+      recommended: 'Recommended',
     },
     additionalInfo: {
       strategies: {

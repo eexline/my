@@ -23,18 +23,30 @@ export function BlogPageClient({ blogPosts }: BlogPageClientProps) {
   const { locale } = useLocale()
 
   return (
-    <main className="flex-grow py-12 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {t.blog.title}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            {t.blog.description}
-          </p>
+    <main className="flex-grow">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-28 px-4">
+        {/* Градиентные орбы для глубины */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl"></div>
         </div>
+        <div className="absolute inset-0 opacity-10 bg-pattern-dense"></div>
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight drop-shadow-lg">
+              {t.blog.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-primary-100 mb-10 md:mb-14 max-w-3xl mx-auto text-balance drop-shadow">
+              {t.blog.description}
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {blogPosts.length === 0 ? (
+      <div className="py-12 px-4">
+        <div className="container mx-auto max-w-6xl">
+          {blogPosts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600 mb-4 text-lg">{t.blog.noPosts}</p>
             <Link
@@ -87,7 +99,8 @@ export function BlogPageClient({ blogPosts }: BlogPageClientProps) {
               ))}
             </div>
           </>
-        )}
+          )}
+        </div>
       </div>
     </main>
   )

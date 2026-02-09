@@ -45,9 +45,9 @@ export function PocketOptionLink({
   
   const variantClasses = {
     default: baseClasses,
-    underline: `${baseClasses} underline hover:no-underline`,
+    underline: baseClasses,
     button: 'btn-primary',
-    light: 'text-white hover:text-primary-100 transition-colors font-semibold underline decoration-2 underline-offset-2'
+    light: 'text-white hover:text-primary-100 transition-colors font-semibold'
   }
 
   const finalClassName = variant === 'default' 

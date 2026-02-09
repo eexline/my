@@ -15,15 +15,22 @@ export function TelegramPageClient() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 px-4 overflow-hidden">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-28 px-4">
+          {/* Градиентные орбы для глубины */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl"></div>
+          </div>
           <div className="absolute inset-0 opacity-10 bg-pattern-dense"></div>
-          <div className="container mx-auto max-w-4xl text-center relative z-10">
-            <h1 className="section-title text-white mb-6 text-balance">
-              {t.telegram.hero.title}
-            </h1>
-            <p className="section-subtitle text-primary-100 mb-8 text-balance">
-              {t.telegram.hero.description}
-            </p>
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight drop-shadow-lg">
+                {t.telegram.hero.title}
+              </h1>
+              <p className="text-xl md:text-2xl text-primary-100 mb-10 md:mb-14 max-w-3xl mx-auto text-balance drop-shadow">
+                {t.telegram.hero.description}
+              </p>
+            </div>
           </div>
         </section>
 

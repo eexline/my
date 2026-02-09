@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { TelegramFunnel } from '@/components/TelegramFunnel'
 import { PocketOptionLink } from '@/components/PocketOptionLink'
 import Link from 'next/link'
-import { FiArrowRight, FiCheck, FiShield, FiDollarSign, FiClock, FiTrendingUp, FiSmartphone, FiGlobe } from 'react-icons/fi'
+import { FiArrowRight, FiCheck, FiShield, FiDollarSign, FiClock, FiTrendingUp, FiSmartphone, FiGlobe, FiZap } from 'react-icons/fi'
 import { renderTranslation } from '@/lib/render-translation'
 import { useTranslations } from '@/hooks/useTranslations'
 
@@ -74,26 +74,42 @@ export function BrokerPageClient() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-12 md:py-20 px-4 overflow-hidden">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-28 px-4">
+          {/* Градиентные орбы для глубины */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl"></div>
+          </div>
           <div className="absolute inset-0 opacity-10 bg-pattern-dense"></div>
-          <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="container mx-auto max-w-4xl relative z-10">
             <div className="text-center">
-              <h1 className="section-title text-white mb-4 md:mb-6 text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight drop-shadow-lg">
                 {renderTranslation(t.broker.hero.title.replace('Pocket Option', '<PocketOptionLink>Pocket Option</PocketOptionLink>'), 'light')}
               </h1>
-              <p className="section-subtitle text-primary-100 max-w-3xl mx-auto text-balance mb-8">
+              <p className="text-xl md:text-2xl text-primary-100 mb-10 md:mb-14 max-w-3xl mx-auto text-balance drop-shadow">
                 {renderTranslation(t.broker.hero.description, 'light')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <PocketOptionLink variant="button" className="btn bg-primary-500 text-white hover:bg-primary-400 border-2 border-primary-300 hover:border-primary-200 px-8 py-4">
-                  {t.broker.hero.cta}
-                  <FiArrowRight size={20} />
-                </PocketOptionLink>
+                {/* Первая кнопка - рефералка (главная) */}
+                <div className="relative inline-block">
+                  <PocketOptionLink 
+                    variant="button" 
+                    className="btn-primary px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-primary-500/50 glow-primary"
+                  >
+                    {t.broker.hero.cta}
+                    <FiArrowRight size={20} />
+                  </PocketOptionLink>
+                  <span className="badge-recommended absolute -top-2 -right-2 text-xs px-2 py-0.5 whitespace-nowrap">
+                    {t.home.guarantees.recommended}
+                  </span>
+                </div>
+                {/* Вторая кнопка - Telegram */}
                 <Link
                   href="/telegram"
-                  className="btn bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 hover:text-white px-8 py-4"
+                  className="btn-telegram"
                 >
                   {t.broker.hero.ctaSecondary}
+                  <FiZap size={20} />
                 </Link>
               </div>
             </div>
@@ -324,10 +340,10 @@ export function BrokerPageClient() {
         <section className="relative py-12 md:py-16 px-4 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-pattern-dense"></div>
           <div className="container mx-auto max-w-4xl text-center relative z-10">
-            <h2 className="section-title text-white mb-6">
+            <h2 className="section-title text-white mb-6 drop-shadow-lg">
               {renderTranslation(t.broker.cta.title.replace('Pocket Option', '<PocketOptionLink>Pocket Option</PocketOptionLink>'), 'light')}
             </h2>
-            <p className="section-subtitle text-primary-100 mb-8 max-w-2xl mx-auto">
+            <p className="section-subtitle text-white mb-8 max-w-2xl mx-auto drop-shadow">
               {renderTranslation(t.broker.cta.description.replace('Pocket Option', '<PocketOptionLink>Pocket Option</PocketOptionLink>'), 'light')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -337,10 +353,10 @@ export function BrokerPageClient() {
               </PocketOptionLink>
               <Link
                 href="/telegram"
-                className="btn-primary"
+                className="btn-telegram"
               >
                 {t.broker.cta.getSignals}
-                <FiArrowRight size={20} />
+                <FiZap size={20} />
               </Link>
             </div>
           </div>

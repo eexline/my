@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { TelegramFunnel } from '@/components/TelegramFunnel'
 import { PocketOptionLink } from '@/components/PocketOptionLink'
 import Link from 'next/link'
-import { FiArrowRight, FiCheck, FiTrendingUp, FiClock, FiBarChart } from 'react-icons/fi'
+import { FiArrowRight, FiCheck, FiTrendingUp, FiClock, FiBarChart, FiZap } from 'react-icons/fi'
 import { renderTranslation } from '@/lib/render-translation'
 import { useTranslations } from '@/hooks/useTranslations'
 
@@ -77,23 +77,30 @@ export function StrategiesPageClient() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-12 md:py-20 px-4 overflow-hidden">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-28 px-4">
+          {/* Градиентные орбы для глубины */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl"></div>
+          </div>
           <div className="absolute inset-0 opacity-10 bg-pattern-dense"></div>
-          <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="container mx-auto max-w-4xl relative z-10">
             <div className="text-center">
-              <h1 className="section-title text-white mb-4 md:mb-6 text-balance" suppressHydrationWarning>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight drop-shadow-lg" suppressHydrationWarning>
                 {renderTranslation(t.strategies.hero.title.replace('Pocket Option', '<PocketOptionLink>Pocket Option</PocketOptionLink>'), 'light', 'hero-title')}
               </h1>
-              <p className="section-subtitle text-primary-100 max-w-3xl mx-auto text-balance mb-8" suppressHydrationWarning>
+              <p className="text-xl md:text-2xl text-primary-100 mb-10 md:mb-14 max-w-3xl mx-auto text-balance drop-shadow" suppressHydrationWarning>
                 {renderTranslation(t.strategies.hero.description, 'light', 'hero-description')}
               </p>
-              <Link
-                href="/telegram"
-                className="btn-primary"
-              >
-                {t.strategies.hero.cta}
-                <FiArrowRight size={20} />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/telegram"
+                  className="btn-telegram"
+                >
+                  {t.strategies.hero.cta}
+                  <FiZap size={20} />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -212,10 +219,10 @@ export function StrategiesPageClient() {
                       ) : (
                         <Link
                           href="/telegram"
-                          className="btn-primary w-full md:w-auto"
+                          className="btn-telegram-light w-full md:w-auto"
                         >
                           {strategy.cta}
-                          <FiArrowRight size={20} />
+                          <FiZap size={20} />
                         </Link>
                       )}
                     </div>
@@ -263,19 +270,19 @@ export function StrategiesPageClient() {
                       <td className="px-4 py-4 text-center">
                         {strategies.find(s => s.id === strategy.id)?.ctaType === 'pocketoption' ? (
                           <PocketOptionLink
-                            variant="underline"
-                            className="text-sm"
+                            variant="button"
+                            className="btn-telegram-light text-sm px-4 py-2"
                           >
                             {t.strategies.comparison.start}
-                            <FiArrowRight size={14} className="inline ml-1" />
+                            <FiZap size={16} />
                           </PocketOptionLink>
                         ) : (
                           <Link
                             href="/telegram"
-                            className="link-primary text-sm"
+                            className="btn-telegram-light text-sm px-4 py-2"
                           >
                             {t.strategies.comparison.start}
-                            <FiArrowRight size={14} className="inline ml-1" />
+                            <FiZap size={16} />
                           </Link>
                         )}
                       </td>

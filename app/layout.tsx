@@ -18,14 +18,14 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Pocket Option Community | Торговые Сигналы для Pocket Option',
-    template: '%s | Pocket Option Community'
+    default: 'LT TRADE | Торговые Сигналы для Pocket Option',
+    template: '%s | LT TRADE'
   },
-  description: 'Pocket Option Community - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+. Получайте сигналы в реальном времени в Telegram.',
-  keywords: ['pocket option', 'pocket option community', 'торговые сигналы', 'pocket option сигналы', 'бинарные опционы', 'трейдинг', 'telegram сигналы', 'автоматическая торговля'],
-  authors: [{ name: 'Pocket Option Community' }],
-  creator: 'Pocket Option Community',
-  publisher: 'Pocket Option Community',
+  description: 'LT TRADE - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+. Получайте сигналы в реальном времени в Telegram.',
+  keywords: ['pocket option', 'lt trade', 'торговые сигналы', 'pocket option сигналы', 'бинарные опционы', 'трейдинг', 'telegram сигналы', 'автоматическая торговля'],
+  authors: [{ name: 'LT TRADE' }],
+  creator: 'LT TRADE',
+  publisher: 'LT TRADE',
   formatDetection: {
     email: false,
     address: false,
@@ -40,22 +40,22 @@ export const metadata: Metadata = {
     locale: 'ru_RU',
     alternateLocale: ['en_US'],
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.vercel.app',
-    title: 'Pocket Option Community | Торговые Сигналы для Pocket Option',
-    description: 'Pocket Option Community - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+. Получайте сигналы в реальном времени в Telegram.',
-    siteName: 'Pocket Option Community',
+    title: 'LT TRADE | Торговые Сигналы для Pocket Option',
+    description: 'LT TRADE - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+. Получайте сигналы в реальном времени в Telegram.',
+    siteName: 'LT TRADE',
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.vercel.app'}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Pocket Option Community - Торговые Сигналы для Pocket Option',
+        alt: 'LT TRADE - Торговые Сигналы для Pocket Option',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pocket Option Community | Торговые Сигналы для Pocket Option',
-    description: 'Pocket Option Community - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+.',
+    title: 'LT TRADE | Торговые Сигналы для Pocket Option',
+    description: 'LT TRADE - Профессиональные торговые сигналы для Pocket Option. Автоматизированная торговля с точностью 85%+.',
     images: [`${process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.vercel.app'}/og-image.jpg`],
     creator: '@tradingsignals',
     site: '@tradingsignals',

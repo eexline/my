@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { FiSend, FiCheck } from 'react-icons/fi'
+import { FiSend, FiCheck, FiZap } from 'react-icons/fi'
 import { useTranslations } from '@/hooks/useTranslations'
 import { renderTranslation } from '@/lib/render-translation'
 
@@ -76,9 +76,7 @@ export function TelegramFunnel({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={handleClick}
-            className={`${variant === 'primary' 
-              ? 'btn bg-white text-primary-600 hover:bg-gray-100 hover:text-primary-600 border-2 border-primary-200 hover:border-primary-300' 
-              : 'btn-primary'} px-8 py-4 text-lg min-w-[200px] justify-center`}
+            className={`btn-telegram px-8 py-4 text-lg min-w-[200px] justify-center`}
           >
             {isClicked ? (
               <>
@@ -87,7 +85,7 @@ export function TelegramFunnel({
               </>
             ) : (
               <>
-                <FiSend size={20} />
+                <FiZap size={20} />
                 {finalButtonText}
               </>
             )}
