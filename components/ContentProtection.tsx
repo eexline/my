@@ -78,14 +78,14 @@ export function ContentProtection() {
         return false
       }
       // ВРЕМЕННО ОТКЛЮЧЕНО: БЛОКИРОВКА F12 И ВСЕХ СПОСОБОВ ОТКРЫТИЯ DEVTOOLS
-      // if (e.key === 'F12' || 
-      //     e.keyCode === 123 || // F12 keyCode
-      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      //   e.stopImmediatePropagation()
-      //   return false
-      // }
+      if (e.key === 'F12' || 
+          e.keyCode === 123 || // F12 keyCode
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        return false
+      }
     }
 
     // ========== ЗАЩИТА ОТ PRINT SCREEN ==========
@@ -169,27 +169,27 @@ export function ContentProtection() {
     // ========== ВРЕМЕННО ОТКЛЮЧЕНО: ЗАЩИТА ОТ ИНСПЕКТИРОВАНИЯ ЭЛЕМЕНТОВ ==========
     const disableInspect = (e: KeyboardEvent) => {
       // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
-      // if (e.key === 'F12' || 
-      //     e.keyCode === 123 ||
-      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      //   e.stopImmediatePropagation()
-      //   return false
-      // }
+      if (e.key === 'F12' || 
+          e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        return false
+      }
     }
     
     // ВРЕМЕННО ОТКЛЮЧЕНО: Дополнительная защита через перехват всех F-клавиш
     const disableFunctionKeys = (e: KeyboardEvent) => {
       // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
-      // if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
-      //   if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
-      //     e.preventDefault()
-      //     e.stopPropagation()
-      //     e.stopImmediatePropagation()
-      //     return false
-      //   }
-      // }
+      if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
+          e.preventDefault()
+          e.stopPropagation()
+          e.stopImmediatePropagation()
+          return false
+        }
+      }
     }
 
     // ========== ЗАЩИТА ОТ ПРАВОЙ КНОПКИ МЫШИ НА ИЗОБРАЖЕНИЯХ ==========
