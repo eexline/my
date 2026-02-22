@@ -27,7 +27,8 @@
 
 @layer components {
   .card {
-    @apply bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300;
+    @apply bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
@@ -41,9 +42,9 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, 
-      rgba(59, 130, 246, 0.8) 0%, 
-      rgba(14, 165, 233, 0.9) 50%, 
-      rgba(59, 130, 246, 0.8) 100%);
+      rgba(30, 58, 138, 0.9) 0%, 
+      rgba(30, 64, 175, 1) 50%, 
+      rgba(30, 58, 138, 0.9) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
@@ -56,18 +57,19 @@
   }
 
   .card:hover {
-    border-color: rgba(59, 130, 246, 0.4);
+    border-color: rgba(30, 58, 138, 0.4);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
   }
 
   .card-gradient {
-    @apply bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300;
+    @apply bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(14, 165, 233, 0.08) 100%);
-    border-color: rgba(59, 130, 246, 0.2);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(30, 64, 175, 0.08) 100%);
+    border-color: rgba(30, 58, 138, 0.2);
   }
 
   /* Используем тот же ::before, что и у .card, но не дублируем */
@@ -79,9 +81,9 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, 
-      rgba(59, 130, 246, 0.8) 0%, 
-      rgba(14, 165, 233, 0.9) 50%, 
-      rgba(59, 130, 246, 0.8) 100%);
+      rgba(30, 58, 138, 0.9) 0%, 
+      rgba(30, 64, 175, 1) 50%, 
+      rgba(30, 58, 138, 0.9) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 10;
@@ -94,10 +96,10 @@
   }
 
   .card-gradient:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(14, 165, 233, 0.12) 100%);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(30, 64, 175, 0.15) 100%);
+    border-color: rgba(30, 58, 138, 0.4);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 
   /* Для карточек с бейджами, которые должны выходить за границы */
@@ -125,9 +127,9 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, 
-      rgba(59, 130, 246, 0.8) 0%, 
-      rgba(14, 165, 233, 0.9) 50%, 
-      rgba(59, 130, 246, 0.8) 100%);
+      rgba(30, 58, 138, 0.9) 0%, 
+      rgba(30, 64, 175, 1) 50%, 
+      rgba(30, 58, 138, 0.9) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
@@ -172,23 +174,23 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 1.5;
-    background: linear-gradient(180deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35), 0 2px 4px rgba(37, 99, 235, 0.2);
+    background: linear-gradient(180deg, rgb(30, 58, 138) 0%, rgb(30, 64, 175) 100%);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.5), 0 2px 4px rgba(15, 23, 42, 0.3);
     border: none;
     color: white !important;
   }
 
   .btn-primary:hover {
-    background: linear-gradient(180deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), 0 4px 8px rgba(37, 99, 235, 0.25);
+    background: linear-gradient(180deg, rgb(30, 64, 175) 0%, rgb(15, 23, 42) 100%);
+    box-shadow: 0 6px 16px rgba(30, 58, 138, 0.6), 0 4px 8px rgba(15, 23, 42, 0.4);
     transform: translateY(-1px);
     color: white !important;
   }
 
   .btn-primary:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-    background: linear-gradient(180deg, rgb(29, 78, 216) 0%, rgb(37, 99, 235) 100%);
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.4);
+    background: linear-gradient(180deg, rgb(15, 23, 42) 0%, rgb(30, 64, 175) 100%);
   }
 
   .btn-secondary {
@@ -381,14 +383,14 @@
 
   .icon-bubble-gradient {
     @apply icon-bubble;
-    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+    background: linear-gradient(135deg, rgb(30, 58, 138) 0%, rgb(30, 64, 175) 100%);
     color: white;
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .icon-bubble-gradient:hover {
-    background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
-    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgb(30, 64, 175) 0%, rgb(15, 23, 42) 100%);
+    box-shadow: 0 6px 24px rgba(30, 58, 138, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   /* Background pattern for sections */
@@ -402,6 +404,28 @@
     background-image: 
       radial-gradient(circle at 1px 1px, rgba(14, 165, 233, 0.06) 1px, transparent 0);
     background-size: 16px 16px;
+  }
+
+  /* Grid pattern for backgrounds */
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-dark {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-light {
+    background-image: 
+      linear-gradient(rgba(30, 58, 138, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 58, 138, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
   /* Decorative gradient overlay */
@@ -448,8 +472,8 @@
   /* Step number with gradient */
   .step-number {
     @apply inline-flex items-center justify-center w-16 h-16 rounded-full text-2xl font-bold text-white;
-    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgb(30, 58, 138) 0%, rgb(30, 64, 175) 100%);
+    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
   }
 
@@ -457,6 +481,24 @@
     background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
     box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
+  }
+
+  /* Компактный вариант для списков (страница стратегий), адаптивно на мобильных */
+  .step-number.step-number--compact {
+    width: 1.75rem;
+    height: 1.75rem;
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    font-size: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .step-number.step-number--compact {
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      min-height: 2rem;
+      font-size: 1rem;
+    }
   }
 
   /* Badge styles */
@@ -486,6 +528,42 @@
     }
   }
 
+  /* Веб-приложение: анимация генерации сигнала */
+  @keyframes signal-generating {
+    0%, 100% {
+      opacity: 0.7;
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 24px 4px rgba(59, 130, 246, 0.35);
+    }
+  }
+  .signal-generating {
+    animation: signal-generating 1.2s ease-in-out infinite;
+  }
+
+  /* Появление карточки сигнала */
+  @keyframes signal-card-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  .signal-card-enter {
+    animation: signal-card-enter 0.4s ease-out forwards;
+  }
+
+  /* Стилизованные селекты веб-приложения (опции в тёмной теме где поддерживается) */
+  .select-app option {
+    background: theme('colors.slate.800');
+    color: theme('colors.white');
+  }
+
   /* Shimmer animation for progress bar */
   @keyframes shimmer {
     0% {
@@ -498,6 +576,32 @@
 
   .animate-shimmer {
     animation: shimmer 2s infinite;
+  }
+
+  /* Optimized pulse animation - slower and smoother */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Hardware acceleration for animated elements */
+  .will-change-transform {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .will-change-opacity {
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 

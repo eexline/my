@@ -13,6 +13,17 @@ export const en = {
     any: 'Any',
   },
   
+  // Trading Chart Component
+  tradingChart: {
+    demoBadge: 'DEMO EXAMPLE',
+    title: 'Example Trading Signal',
+    subtitle: 'AI Bot Demonstration',
+    currencyPair: 'Currency Pair',
+    timeframe: 'Timeframe',
+    direction: 'Direction',
+    warning: '⚠️ This is a demonstration example, not a real signal',
+  },
+  
   // Navigation
   nav: {
     home: 'Home',
@@ -21,6 +32,15 @@ export const en = {
     broker: 'Broker',
     blog: 'Blog',
     telegram: 'Telegram',
+    menu: 'Menu',
+    main: 'Main',
+    info: 'Information',
+    legal: 'Legal',
+    about: 'About Us',
+    contacts: 'Contacts',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
+    risk: 'Risk Warning',
   },
 
   // Home page
@@ -30,6 +50,9 @@ export const en = {
       description: 'Real-time automated market analysis. Clear entry and exit points. No emotions or guessing.',
       cta: 'Start Receiving Signals',
       ctaSecondary: 'Go to Telegram',
+      chooseMethod: 'Choose how to receive signals:',
+      ctaTelegram: 'Telegram Bot',
+      ctaWebApp: 'Web Application',
       pocketOption: 'Pocket Option',
       badges: {
         users: '10,000+ active traders',
@@ -74,25 +97,47 @@ export const en = {
       join: 'Join',
     },
     howItWorks: {
-      title: 'How It Works',
-      subtitle: 'Just 4 simple steps to start trading',
+      title: 'How Trading with Bot Works',
+      subtitle: 'Simple process from receiving a signal to a profitable trade in 3 steps',
       step1: {
-        title: 'Register with Broker',
-        description: 'Register with the broker using our link. Free and takes 2 minutes.',
+        title: 'Select Parameters',
+        description: 'Select a currency pair (EUR/USD, GBP/USD, etc.) and timeframe (M1, M5, M15, H1, etc.) for analysis',
       },
       step2: {
-        title: 'Connect to Telegram Bot',
-        description: 'Connect to the Telegram bot and select currency pair and timeframe.',
+        title: 'Get AI Signal',
+        description: 'AI bot analyzes the selected currency pair and timeframe, then issues a buy (BUY) or sell (SELL) signal',
       },
       step3: {
-        title: 'Receive AI Signals',
-        description: 'Receive AI signals with entry and exit points in real-time.',
-      },
-      step4: {
-        title: 'Trade with Strategy',
-        description: 'Trade using ready-made strategy with clear recommendations.',
+        title: 'Open Trade and Get Profit',
+        description: 'Open a trade on the broker platform based on the bot signal. When the target level is reached, the trade closes automatically with profit',
       },
       cta: 'Register and Get Access',
+    },
+    whyChooseUs: {
+      title: 'Why Choose LT TRADE',
+      subtitle: 'Advantages that make trading easier and more profitable',
+      aiAnalysis: {
+        title: 'AI Analysis',
+        description: 'Automatic market analysis using artificial intelligence and machine learning 24/7 without interruptions',
+      },
+      accuracy: {
+        title: '85%+ Accuracy',
+        description: 'High signal accuracy confirmed by statistics and proven market analysis algorithms',
+      },
+      instant: {
+        title: 'Instant',
+        description: 'Receive signals in real-time without delays. Choose your preferred method: Telegram bot or web application',
+      },
+      secure: {
+        title: 'Secure',
+        description: 'We do not have access to your funds and account. You make all trading decisions yourself',
+      },
+      finalCta: {
+        title: 'Ready to Start Earning?',
+        description: 'Join thousands of traders who are already using our signals for stable profits',
+        ctaWebApp: 'Open Web Application',
+        ctaTelegram: 'Go to Telegram',
+      },
     },
     trust: {
       title: 'Why You Can Trust This',
@@ -867,6 +912,89 @@ export const en = {
     disclaimer: {
       title: 'Disclaimer',
       content: 'Our signals and materials are for informational purposes only and are not financial advice. All trading decisions are made by you independently, and you bear full responsibility for trading results.',
+    },
+  },
+  
+  // App page
+  app: {
+    checking: 'Checking access...',
+    title: 'Access to Trading Signals',
+    userTypeQuestion: 'Are you already our user or a newcomer?',
+    existingUser: 'I am already a user',
+    newUser: 'I am a newcomer',
+    howToStart: {
+      title: 'How to Start Receiving Signals',
+      description: 'Follow these steps to get access to trading signals',
+      stepLabel: 'STEP',
+      step1: {
+        title: 'Register with Pocket Option broker using our link',
+        description: 'Important: use our referral link for registration. Create an account on the Pocket Option platform to start trading',
+        button: 'Register with our link',
+      },
+      step2: {
+        title: 'Make your first deposit',
+        description: 'Top up your trading account with any amount to activate access to signals',
+      },
+      step3: {
+        title: 'Copy your trader ID',
+        description: 'In your Pocket Option personal account, find and copy your unique trader ID',
+        hint: 'Trader ID is located in your profile. Click on the profile icon or your avatar in the top right corner',
+      },
+      step4: {
+        title: 'Enter your trader ID in the authorization form',
+        description: 'Return to this page and enter your trader ID to get access to signals',
+        button: 'Go to Authorization',
+      },
+      back: '← Back to selection',
+    },
+    auth: {
+      title: 'Authorization',
+      description: 'Enter your trader ID to access signals',
+      placeholder: 'Your trader ID',
+      checking: 'Checking...',
+      login: 'Login',
+      back: '← Back to selection',
+      errors: {
+        notFound: 'User not found. Please register with the broker.',
+        noDeposit: 'You need to top up your deposit to access signals.',
+        connection: 'Connection error. Please try again later.',
+        checkError: 'User verification error',
+      },
+    },
+    signals: {
+      title: 'Trading Signals',
+      welcome: 'Welcome, trader ID:',
+      selectPair: 'Currency pair',
+      selectTimeframe: 'Timeframe',
+      getSignal: 'Get signal',
+      getting: 'Getting...',
+      yourSignal: 'Your signal',
+      forex: 'Forex',
+      otc: 'OTC',
+      cooldown: 'Next signal in {{sec}} sec',
+      filters: {
+        allPairs: 'All currency pairs',
+        allDirections: 'All directions',
+        reset: 'Reset',
+      },
+      loading: 'Loading signals...',
+      noSignals: 'No active signals',
+      table: {
+        pair: 'Currency Pair',
+        direction: 'Direction',
+        entry: 'Entry',
+        takeProfit: 'Take Profit',
+        stopLoss: 'Stop Loss',
+        timeframe: 'Timeframe',
+        time: 'Time',
+        status: 'Status',
+      },
+      status: {
+        active: 'Active',
+        win: 'Win',
+        loss: 'Loss',
+        closed: 'Closed',
+      },
     },
   },
 }

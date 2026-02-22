@@ -77,15 +77,15 @@ export function ContentProtection() {
         e.stopPropagation()
         return false
       }
-      // БЛОКИРОВКА F12 И ВСЕХ СПОСОБОВ ОТКРЫТИЯ DEVTOOLS
-      if (e.key === 'F12' || 
-          e.keyCode === 123 || // F12 keyCode
-          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
-        e.preventDefault()
-        e.stopPropagation()
-        e.stopImmediatePropagation()
-        return false
-      }
+      // ВРЕМЕННО ОТКЛЮЧЕНО: БЛОКИРОВКА F12 И ВСЕХ СПОСОБОВ ОТКРЫТИЯ DEVTOOLS
+      // if (e.key === 'F12' || 
+      //     e.keyCode === 123 || // F12 keyCode
+      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c' || e.key === 'K' || e.key === 'k'))) {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      //   e.stopImmediatePropagation()
+      //   return false
+      // }
     }
 
     // ========== ЗАЩИТА ОТ PRINT SCREEN ==========
@@ -163,32 +163,33 @@ export function ContentProtection() {
       }
     }
 
-    const devToolsInterval = setInterval(detectDevTools, 100) // Более частое обнаружение
+    // ВРЕМЕННО ОТКЛЮЧЕНО: обнаружение DevTools через размеры окна
+    // const devToolsInterval = setInterval(detectDevTools, 100) // Более частое обнаружение
 
-    // ========== ЗАЩИТА ОТ ИНСПЕКТИРОВАНИЯ ЭЛЕМЕНТОВ ==========
+    // ========== ВРЕМЕННО ОТКЛЮЧЕНО: ЗАЩИТА ОТ ИНСПЕКТИРОВАНИЯ ЭЛЕМЕНТОВ ==========
     const disableInspect = (e: KeyboardEvent) => {
-      // Блокировка F12 и всех комбинаций для открытия DevTools
-      if (e.key === 'F12' || 
-          e.keyCode === 123 ||
-          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
-        e.preventDefault()
-        e.stopPropagation()
-        e.stopImmediatePropagation()
-        return false
-      }
+      // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
+      // if (e.key === 'F12' || 
+      //     e.keyCode === 123 ||
+      //     (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j' || e.key === 'K' || e.key === 'k'))) {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      //   e.stopImmediatePropagation()
+      //   return false
+      // }
     }
     
-    // Дополнительная защита через перехват всех F-клавиш
+    // ВРЕМЕННО ОТКЛЮЧЕНО: Дополнительная защита через перехват всех F-клавиш
     const disableFunctionKeys = (e: KeyboardEvent) => {
-      // Блокировка F12 и комбинаций с Ctrl+Shift
-      if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
-        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
-          e.preventDefault()
-          e.stopPropagation()
-          e.stopImmediatePropagation()
-          return false
-        }
-      }
+      // ВРЕМЕННО ОТКЛЮЧЕНО для разработки
+      // if (e.keyCode >= 112 && e.keyCode <= 123) { // F1-F12
+      //   if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey)) {
+      //     e.preventDefault()
+      //     e.stopPropagation()
+      //     e.stopImmediatePropagation()
+      //     return false
+      //   }
+      // }
     }
 
     // ========== ЗАЩИТА ОТ ПРАВОЙ КНОПКИ МЫШИ НА ИЗОБРАЖЕНИЯХ ==========
@@ -323,7 +324,8 @@ export function ContentProtection() {
       }, 100)
     }
     
-    blockDevTools()
+    // ВРЕМЕННО ОТКЛЮЧЕНО: блокировка DevTools
+    // blockDevTools()
 
     // ========== ПРИМЕНЕНИЕ ВСЕХ ЗАЩИТ ==========
     document.addEventListener('selectstart', disableSelection, true)
@@ -354,7 +356,7 @@ export function ContentProtection() {
 
     // ========== ОЧИСТКА ПРИ РАЗМОНТИРОВАНИИ ==========
     return () => {
-      clearInterval(devToolsInterval)
+      // clearInterval(devToolsInterval) // ВРЕМЕННО ОТКЛЮЧЕНО
       observer.disconnect()
       
       document.removeEventListener('selectstart', disableSelection, true)
